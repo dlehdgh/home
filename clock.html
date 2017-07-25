@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset="UTF-8">
+  <title>시계</title>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script>
+	const date = new Date();
+	const year = date.getFullYear(4);
+	const month = date.getMonth() + 1;
+	const day = date.getDate();
+	let temp = 31;
+
+	$(document).ready(() => {
+		const weeks = new Array('일', '월', '화', '수', '목', '금', '토');
+		$('#clock h1').html('<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>');
+		setTimeout(function(){
+			$('#calendar').css('display', 'inline');
+		}, 1000);
+		setInterval(function(){
+			const date = new Date();
+			const year = date.getFullYear(4);
+			const month = date.getMonth() + 1;
+			const day = date.getDate();
+			const week = date.getDay();
+			const hour = date.getHours();
+			const minutes = date.getMinutes();
+			const seconds = date.getSeconds();
+			$('#time').html(`${num(hours(hour))}<span class="colon">:</span>${num(minutes)}<span class="colon">:</span>${num(seconds)}`);
+			$('#date span').html(`${year}년 ${month}월 ${day}일 ${weeks[week]}요일 `);
+		}, 1000);
+
+		$(document).on('click', '#calendar', () => {
+			$('#cal-box').css('display', 'flex');
+			$('#cal-title').html(`<span id="year">${year}</span>.<span id="month">${num(month)}</span>`);
+			calendar();
+		});
+		$('#prev').on('click', () => {
+			let year_text = parseInt($("#year").text());
+			let month_text = parseInt($("#month").text());
+			if(month_text > 1){
+				$('#month').text(num(month_text - 1));
+			}else{
+				$('#month').text('12');
+				$('#year').text(year_text - 1);
+			}
+			calendar();
+		});
+		$('#next').on('click', function(){
+			let year_text = parseInt($("#year").text());
+			let month_text = parseInt($("#month").text());
+			if(month_text <	 12){
+				$('#month').text(num(month_text + 1));
+			}else{
+				$('#month').text('01');
+				$('#year').text(year_text + 1);
+			}
+			calendar();
+		});
+		$('#close').on('click', function(){
+			$('#cal-box').hide();
+		});
+	});
+
+	const num = (no) => {
+		if(no < 10){
+			return '0' + no;
+		}else{
+			return no;
+		}
+	}
+
+	const hours = (no) => {
+		if(no > 12){
+			$('#day').text('오후');
+			return no - 12;
+		}else{
+			$('#day').text('오전');
+			return no;
+		}
+	}
+
+	const calendar = () => {
+		let year_text = $("#year").text();
+		let month_text = parseInt($("#month").text()) - 1;
+		const first = new Date(year_text, month_text, 1);
+		const weeks = new Date(year_text, month_text, 1).getDay();
+		let table = '';
+		table += '  <tr>';
+		table += '    <th class="text-danger">일</th>';
+		table += '    <th class="text-success">월</th>';
+		table += '    <th class="text-success">화</th>';
+		table += '    <th class="text-success">수</th>';
+		table += '    <th class="text-success">목</th>';
+		table += '    <th class="text-success">금</th>';
+		table += '    <th class="text-primary">토</th>';
+		if(weeks > 0){
+			table += '  </tr>';
+			table += '  <tr>';
+		}
+		for(i=0; i<weeks; i++){
+			table += '<td></td>';
+		}
+		if(month_text + 1 == 2){
+			(year_text % 4 == 0) ? temp = 29 : temp = 28;
+		}else if(month_text + 1 == 4 || month_text + 1 == 6 || month_text + 1 == 9 || month_text + 1 == 11){
+			temp = 30;
+		}else {
+			temp = 31;
+		}
+		for(i=1; i<=temp; i++){
+			const enter = new Date(year_text, month_text, i);
+			if(enter.getDay() === 0){
+				table += '</tr><tr>';
+			}
+			if(month == month_text + 1 && i == day){
+				table += '<td class="bg-primary hover">' + i + '</td>';
+			}else{
+				table += '<td>' + i + '</td>';
+			}
+		}
+		var cell = (7 * Math.ceil((weeks + temp) / 7)) - (weeks + temp);
+		for(k=0; k<cell; k++){
+			table += '<td></td>';
+		}
+		if(cell > 0){
+			table += '</tr>'
+		}
+		const line = 42 - (7 * Math.ceil((weeks + temp) / 7))
+		if(line == 7){
+			table += '<tr>';
+			for(l=0; l<7; l++){
+				table += '<td></td>';
+			}
+			table += '</tr>';
+		}
+		$('#cal-table').html(table);
+		$('#cal-table td:nth-child(1)').addClass('text-danger');
+		$('#cal-table td:nth-child(7)').addClass('text-primary');
+	}
+  </script>
+  <style>
+	body {
+		font-family: "Nanum Gothic", sans-serif;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 100vh;
+		margin: 0;
+		background-image: url(https://source.unsplash.com/category/nature/1600x900);
+		-webkit-background-size: cover;
+		background-size: 100%;
+	}
+	#clock {
+		color: #FFF;
+		text-align: center;
+		max-width: 80%;
+		padding: 1rem 2rem;
+		border-radius: 10px;
+		background-color: rgba(0,0,0,0.3);
+	}
+	#clock h1 {
+		font-size: 10rem;
+		display: inline-block;
+		margin: 0;
+	}
+	#clock h1 span.colon {
+		font-size: 7rem;
+		vertical-align: middle;
+		display: inline-block;
+		padding: 0 20px;
+		margin-top: -50px;
+	}
+	#clock h1 i.fa {
+		font-size: 7rem;
+		margin: 0 50px;
+	}
+	#clock h2 {
+		font-size: 3rem;
+	}
+	#clock h2 a {
+		display: none;
+	}
+	#clock #day {
+		font-size: 2rem;
+		font-weight: bold;
+		padding-left: 20px;
+	}
+	#cal-box {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		display: none;
+		justify-content: center;
+		align-items: center;
+		background-color: rgba(0,0,0,0.5);
+	}
+	#cal-title {
+		font-size: 2.5rem;
+		color: #FFF;
+		padding: 0 10px;
+	}
+	#cal-table {
+		width: auto;
+		border: 1px solid #000;	
+		border-radius: 5px;
+		background-color: #FFF;
+	}
+	#cal-table th, #cal-table td  {
+		text-align: center;
+		width: 4rem;
+		height: 4rem;
+	}
+  </style>
+ </head>
+ <body>
+  <div id="clock">
+	<h1 id="time"></h1>
+	<span id="day"></span>
+	<h2 id="date">
+		<span></span>
+		<a href="#" id="calendar" aria-label="달력보기"><i class="fa fa-calendar" aria-hidden="true"></i></a>
+	</h2>
+  </div>
+
+  <div id="cal-box">
+	<figure>
+		<figcaption class="text-center">
+			<button type="button" id="prev" class="btn btn-default" aria-label="날짜 감소">
+				<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			</button>
+			<span id="cal-title"></span>
+			<button type="button" id="next" class="btn btn-default btn-sm" aria-label="날짜 증가">
+				<i class="fa fa-chevron-right" aria-hidden="true"></i>
+			</button>
+			<button type="button" id="close" class="btn btn-default btn-sm" aria-label="팝업닫기">
+				<i class="fa fa-times" aria-hidden="true"></i> Close
+			</button>
+		</figcaption>
+		<table id="cal-table" class="table"></table>
+	</figure>
+  </div>
+ </body>
+</html>
