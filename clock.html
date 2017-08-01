@@ -87,56 +87,31 @@
 	const calendar = () => {
 		let year_text = $("#year").text();
 		let month_text = parseInt($("#month").text()) - 1;
-		const first = new Date(year_text, month_text, 1);
-		const weeks = new Date(year_text, month_text, 1).getDay();
+		const oneday = 24 * 60 * 60 * 1000;
+		const first = new Date(year_text, month_text, 1) - (oneday * (new Date(year_text, month_text, 1).getDay() + 1));
 		let table = '';
-		table += '  <tr>';
-		table += '    <th class="text-danger">일</th>';
-		table += '    <th class="text-success">월</th>';
-		table += '    <th class="text-success">화</th>';
-		table += '    <th class="text-success">수</th>';
-		table += '    <th class="text-success">목</th>';
-		table += '    <th class="text-success">금</th>';
-		table += '    <th class="text-primary">토</th>';
-		if(weeks > 0){
-			table += '  </tr>';
-			table += '  <tr>';
-		}
-		for(i=0; i<weeks; i++){
-			table += '<td></td>';
-		}
-		if(month_text + 1 == 2){
-			(year_text % 4 == 0) ? temp = 29 : temp = 28;
-		}else if(month_text + 1 == 4 || month_text + 1 == 6 || month_text + 1 == 9 || month_text + 1 == 11){
-			temp = 30;
-		}else {
-			temp = 31;
-		}
-		for(i=1; i<=temp; i++){
-			const enter = new Date(year_text, month_text, i);
-			if(enter.getDay() === 0){
-				table += '</tr><tr>';
-			}
-			if(month == month_text + 1 && i == day){
-				table += '<td class="bg-primary hover">' + i + '</td>';
+		table += '  <tr>\n';
+		table += '    <th class="text-danger">일</th>\n';
+		table += '    <th class="text-success">월</th>\n';
+		table += '    <th class="text-success">화</th>\n';
+		table += '    <th class="text-success">수</th>\n';
+		table += '    <th class="text-success">목</th>\n';
+		table += '    <th class="text-success">금</th>\n';
+		table += '    <th class="text-primary">토</th>\n';
+		table += '  </tr>\n';
+		for(i=1; i<=42; i++){
+			let now = new Date(first + (oneday * i));
+			if(now.getDay() == 0) table += '  <tr>\n';
+			if(month_text != now.getMonth()){
+				table += '    <td></td>\n';
 			}else{
-				table += '<td>' + i + '</td>';
+				if(month == month_text + 1 && day == now.getDate()){
+					table += '    <td class="bg-primary hover">' + now.getDate() + '<span class="hides">오늘</span></td>\n';
+				}else{
+					table += '    <td>' + now.getDate() + '</td>\n';
+				}
 			}
-		}
-		var cell = (7 * Math.ceil((weeks + temp) / 7)) - (weeks + temp);
-		for(k=0; k<cell; k++){
-			table += '<td></td>';
-		}
-		if(cell > 0){
-			table += '</tr>'
-		}
-		const line = 42 - (7 * Math.ceil((weeks + temp) / 7))
-		if(line == 7){
-			table += '<tr>';
-			for(l=0; l<7; l++){
-				table += '<td></td>';
-			}
-			table += '</tr>';
+			if(now.getDay() == 6) table += '  </tr>\n';
 		}
 		$('#cal-table').html(table);
 		$('#cal-table td:nth-child(1)').addClass('text-danger');
