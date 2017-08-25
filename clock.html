@@ -2,7 +2,6 @@
 <html lang="ko">
  <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>시계</title>
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -101,19 +100,62 @@
 		table += '    <th class="text-primary">토</th>\n';
 		table += '  </tr>\n';
 		for(i=1; i<=42; i++){
-			let now = new Date(first + (oneday * i));
-			if(now.getDay() == 0) table += '  <tr>\n';
-			if(month_text != now.getMonth()){
+			let now = new Date(first + (oneday * i)).getDate();
+			if(i % 7 == 1) table += '  <tr>\n';
+			if(month_text != new Date(first + (oneday * i)).getMonth()){
 				table += '    <td></td>\n';
 			}else{
-				if(month == month_text + 1 && day == now.getDate()){
-					table += '    <td class="bg-primary hover">' + now.getDate() + '<span class="hides">오늘</span></td>\n';
+				if(month == month_text + 1 && now == day){
+					table += '    <td class="bg-primary hover">' + now + '<span class="hides">오늘</span></td>\n';
 				}else{
-					table += '    <td>' + now.getDate() + '</td>\n';
+					table += '    <td>' + now + '</td>\n';
 				}
 			}
-			if(now.getDay() == 6) table += '  </tr>\n';
+			if(i % 7 == 0) table += '  </tr>\n';
 		}
+		console.log(table);
+/*
+		if(weeks > 0){
+			table += '  </tr>';
+			table += '  <tr>';
+		}
+		for(i=0; i<weeks; i++){
+			table += '<td></td>';
+		}
+		if(month_text + 1 == 2){
+			(year_text % 4 == 0) ? temp = 29 : temp = 28;
+		}else if(month_text + 1 == 4 || month_text + 1 == 6 || month_text + 1 == 9 || month_text + 1 == 11){
+			temp = 30;
+		}else {
+			temp = 31;
+		}
+		for(i=1; i<=temp; i++){
+			const enter = new Date(year_text, month_text, i);
+			if(enter.getDay() === 0){
+				table += '</tr><tr>';
+			}
+			if(month == month_text + 1 && i == day){
+				table += '<td class="bg-primary hover">' + i + '</td>';
+			}else{
+				table += '<td>' + i + '</td>';
+			}
+		}
+		var cell = (7 * Math.ceil((weeks + temp) / 7)) - (weeks + temp);
+		for(k=0; k<cell; k++){
+			table += '<td></td>';
+		}
+		if(cell > 0){
+			table += '</tr>'
+		}
+		const line = 42 - (7 * Math.ceil((weeks + temp) / 7))
+		if(line == 7){
+			table += '<tr>';
+			for(l=0; l<7; l++){
+				table += '<td></td>';
+			}
+			table += '</tr>';
+		}
+*/
 		$('#cal-table').html(table);
 		$('#cal-table td:nth-child(1)').addClass('text-danger');
 		$('#cal-table td:nth-child(7)').addClass('text-primary');
@@ -139,28 +181,29 @@
 	#clock {
 		color: #FFF;
 		text-align: center;
+		max-width: 80%;
 		padding: 1rem 2rem;
 		border-radius: 10px;
 		background-color: rgba(0,0,0,0.3);
 	}
 	#clock h1 {
-		font-size: 5vw;/*10rem;*/
+		font-size: 10rem;
 		display: inline-block;
 		margin: 0;
 	}
 	#clock h1 span.colon {
-		font-size: 3.5vw;/*7rem;*/
+		font-size: 7rem;
 		vertical-align: middle;
 		display: inline-block;
 		padding: 0 20px;
 		margin-top: -50px;
 	}
 	#clock h1 i.fa {
-		font-size: 3.5vw;/*7rem;*/
+		font-size: 7rem;
 		margin: 0 50px;
 	}
 	#clock h2 {
-		font-size: 1.5vw;/*3rem;*/
+		font-size: 3rem;
 	}
 	#clock h2 a {
 		display: none;
@@ -199,16 +242,16 @@
 	}
 	.hides {
 		position: absolute;
-		top: -999px;
-		left: -999px;
+		top: -10000px;
+		left: -10000px;
 		font-size: 1px;
-		width: 1px;
-		height 1px;
+		height: 0;
+		width: 0;
 	}
   </style>
  </head>
  <body>
-  <div id="clock" class="center-block col-xs-8 col-md-4">
+  <div id="clock">
 	<h1 id="time"></h1>
 	<span id="day"></span>
 	<h2 id="date">
