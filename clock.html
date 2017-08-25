@@ -2,6 +2,7 @@
 <html lang="ko">
  <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>시계</title>
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -138,7 +139,6 @@
 	#clock {
 		color: #FFF;
 		text-align: center;
-		max-width: 80%;
 		padding: 1rem 2rem;
 		border-radius: 10px;
 		background-color: rgba(0,0,0,0.3);
@@ -208,7 +208,7 @@
   </style>
  </head>
  <body>
-  <div id="clock">
+  <div id="clock" class="center-block col-xs-8 col-md-4>
 	<h1 id="time"></h1>
 	<span id="day"></span>
 	<h2 id="date">
