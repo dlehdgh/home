@@ -20,7 +20,7 @@
 		const weeks = new Array('일', '월', '화', '수', '목', '금', '토');
 		$('#clock h1').html('<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>');
 		setTimeout(function(){
-			$('#calendar').css({display: 'inline', width: 'auto' });
+			$('#calendar').css('display', 'inline');
 		}, 1000);
 		setInterval(function(){
 			const date = new Date();
@@ -144,23 +144,23 @@
 		background-color: rgba(0,0,0,0.3);
 	}
 	#clock h1 {
-		font-size: 10vw;/*10rem;*/
+		font-size: 5vw;/*10rem;*/
 		display: inline-block;
 		margin: 0;
 	}
 	#clock h1 span.colon {
-		font-size: 7vw;/*7rem;*/
+		font-size: 3.5vw;/*7rem;*/
 		vertical-align: middle;
 		display: inline-block;
 		padding: 0 20px;
 		margin-top: -50px;
 	}
 	#clock h1 i.fa {
-		font-size: 7vw;/*7rem;*/
+		font-size: 3.5vw;/*7rem;*/
 		margin: 0 50px;
 	}
 	#clock h2 {
-		font-size: 3vw;/*3rem;*/
+		font-size: 1.5vw;/*3rem;*/
 	}
 	#clock h2 a {
 		display: none;
