@@ -249,5 +249,41 @@
 		<span>Copyrightⓒ 2016 dlehdgh All Rights Reserved.</span>
 	</div>
   </footer>
+
+  <!-- Calendar Modal -->
+  <div id="calendar-modal" class="modal fade" tabindex="0">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header text-center">
+				<button type="button" id="prev" class="btn btn-default btn-sm" aria-label="날짜 감소">
+					<i class="fa fa-chevron-left" aria-hidden="true"></i>
+				</button>
+				<span id="cal-title"></span>
+				<button type="button" id="next" class="btn btn-default btn-sm" aria-label="날짜 증가">
+					<i class="fa fa-chevron-right" aria-hidden="true"></i>
+				</button>
+				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal" aria-label="팝업닫기">
+					<i class="fa fa-times" aria-hidden="true"></i> Close
+				</button>
+			</div>
+			<div class="modal-body">
+				<table id="cal-table" class="table">
+					<thead>
+						<tr>
+							<th class="text-danger">일</th>
+							<th class="text-success">월</th>
+							<th class="text-success">화</th>
+							<th class="text-success">수</th>
+							<th class="text-success">목</th>
+							<th class="text-success">금</th>
+							<th class="text-primary">토</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+  </div>
  </body>
 </html>
