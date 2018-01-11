@@ -2,210 +2,20 @@
 <html lang="ko">
  <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width; initial-scale=1.0">
-  <title>Accessibility</title>
-  <!-- favicon -->
-  <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
-  <!-- Google Font -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>시계</title>
+  <!-- google font -->
   <link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
   <!-- font awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- jQuery -->
+  <!-- jquery -->
   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  <style>
-	body {
-		font-family: "Nanum Gothic", sans-serif;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		min-height: 100vh;
-		margin: 0;
-		background-image: url(https://source.unsplash.com/category/nature/1600x900);
-		background-size: cover;
-	}
-	#navbar .navbar-header .navbar-brand {
-		font-weight: bold;
-		color: #fff;
-	}
-
-	/* 시계 */
-	#clock {
-		color: #FFF;
-		text-align: center;
-		display: none;
-		padding: 1vw 2vw;
-		border-radius: 10px;
-		background-color: rgba(0,0,0,0.5);
-	}
-	#clock #time {
-		font-size: 1.2em;
-		margin-top: 0;
-	}
-	#clock #time .colon {
-		font-style: normal;
-		padding: 0 0.4rem;
-	}
-	#clock #noon {
-		font-size: 0.5em;
-	}
-
-	/* 켈린더 */
-	#calendar-modal #cal-title {
-		font-size: 1.5em;
-		padding-left: 1rem;
-		padding-right: 1rem;
-	}
-	#cal-table th, #cal-table td {
-		text-align: center;
-		border: 0 none;
-	}
-	#footer {
-		text-align: center;
-		color: #fff;
-		padding: 2rem 0;
-	}
-
-	@media (max-width: 440px){
-		#clock #time *, 
-		#clock #date, 
-		#clock #day {
-			font-size: medium;
-		}
-		#clock #time {
-			font-size: xx-large;
-		}
-		#clock #time span.colon {
-			vertical-align: middle;
-			padding: 0 0.5vw;
-		}
-		#clock #date {
-			margin-top: 1.5vw;
-		}
-	}
-  </style>
-  <script>
-	$(document).ready(() => {
-		const weeks = new Array('일', '월', '화', '수', '목', '금', '토');
-		$('#clock').delay(1000).fadeIn(1000);
-		setInterval(() => {
-			const date = new Time();
-			$('#time').html(`${digits(hours(date.hour))}<i class="colon">:</i>${digits(date.min)}<i class="colon">:</i>${digits(date.sec)}`);
-			$('#date').html(`${date.year}년 ${date.month + 1}월 ${date.day}일 ${weeks[date.week]}요일`);
-		}, 1000);
-
-		$('#calendar').on('click', () => {
-			const date = new Time();
-			$('#calendar-modal').modal();
-			$('#cal-title').html(`<span id="year">${date.year}</span>.<span id="month">${digits(date.month + 1)}</span>`);
-			calendar();
-		});
-		$('#prev').on('click', () => {
-			const year = Number($('#year').text());
-			const month = Number($('#month').text());
-			if(month > 1){
-				$('#month').text(digits(month - 1));
-			}else{
-				$('#month').text('12');
-				$('#year').text(year - 1);
-			}
-			calendar();
-		});
-		$('#next').on('click', () => {
-			const year = Number($('#year').text());
-			const month = Number($('#month').text());
-			if(month < 12){
-				$('#month').text(digits(month + 1));
-			}else{
-				$('#month').text('01');
-				$('#year').text(year + 1);
-			}
-			calendar();
-		});
-	});
-
-	// 날짜 함수
-	function Time(){
-		const date = new Date();
-		this.year = date.getFullYear(4);
-		this.month = date.getMonth();
-		this.day = date.getDate();
-		this.week = date.getDay();
-		this.hour = date.getHours();
-		this.min = date.getMinutes();
-		this.sec = date.getSeconds();
-		this.temp = 31;
-	}
-
-	// 시간을 12시간으로 표시
-	function hours(no){
-		if(no > 12){
-			$('#noon').text('오후');
-			return no - 12;
-		}else{
-			$('#noon').text('오전');
-			return no;
-		}
-	}
-
-	// 두자리로 출력
-	function digits(no){
-		if(no < 10){
-			return '0' + no;
-		}else{
-			return no;
-		}
-	}
-
-	// 달력 출력
-	function calendar(){
-		const date = new Time();
-		const year = $('#year').text();
-		const month = Number($('#month').text()) - 1;
-		const first = new Date(year, month, 1);
-		const weeks = new Date(year, month, 1).getDay();
-		let table = ``;
-		table += `  <tr>`;
-		for(i=0; i<weeks; i++){
-			table += '<td></td>';
-		}
-		if(month + 1 == 2){
-			(year % 4 == 0) ? temp = 29 : temp = 28;
-		}else if(month + 1 == 4 || month + 1 == 6 || month + 1 == 9 || month + 1 == 11){
-			temp = 30;
-		}else{
-			temp = 31;
-		}
-		for(i=1; i<=temp; i++){
-			let enter = new Date(year, month, i);
-			if(enter.getDay() === 0){
-				table += `</tr><tr>`;
-			}
-			if(date.month == month && i == date.day){
-				table += `<td class="bg-primary hover">${i}</td>`;
-			}else{
-				table += `<td>${i}</td>`;
-			}
-		}
-		const cell = (7 * Math.ceil((weeks + temp) / 7)) - (weeks + temp);
-		for(k=0; k<cell; k++){
-			table += `<td></td>`;
-		}
-		const line = 42 - (7 * Math.ceil((weeks + temp) / 7))
-		if(line == 7){
-			table += `<tr>`;
-			for(l=0; l<7; l++){
-				table += `<td></td>`;
-			}
-		}
-		table += `</tr>`;
-		$('#cal-table tbody').html(table);
-		$('#cal-table td:nth-child(1)').addClass('text-danger');
-		$('#cal-table td:nth-child(7)').addClass('text-primary');
-	}
-  </script>
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- holiday calendar -->
+  <link rel="stylesheet" href="public/style.css">
+  <script src="public/calendar.js"></script>
  </head>
  <body>
   <nav id="navbar" class="navbar navbar-inverse navbar-fixed-top">
@@ -252,7 +62,7 @@
 
   <!-- Calendar Modal -->
   <div id="calendar-modal" class="modal fade" tabindex="0">
-	<div class="modal-dialog modal-sm">
+	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header text-center">
 				<button type="button" id="prev" class="btn btn-default btn-sm" aria-label="날짜 감소">
@@ -262,21 +72,20 @@
 				<button type="button" id="next" class="btn btn-default btn-sm" aria-label="날짜 증가">
 					<i class="fa fa-chevron-right" aria-hidden="true"></i>
 				</button>
-				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal" aria-label="팝업닫기">
-					<i class="fa fa-times" aria-hidden="true"></i> Close
-				</button>
+				<button type="button" id="today" class="btn btn-success btn-sm">오늘</button>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			</div>
 			<div class="modal-body">
 				<table id="cal-table" class="table">
 					<thead>
-						<tr>
-							<th class="text-danger">일</th>
-							<th class="text-success">월</th>
-							<th class="text-success">화</th>
-							<th class="text-success">수</th>
-							<th class="text-success">목</th>
-							<th class="text-success">금</th>
-							<th class="text-primary">토</th>
+						<tr class="bg-success">
+							<th>일</th>
+							<th>월</th>
+							<th>화</th>
+							<th>수</th>
+							<th>목</th>
+							<th>금</th>
+							<th>토</th>
 						</tr>
 					</thead>
 					<tbody></tbody>
