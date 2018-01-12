@@ -69,6 +69,11 @@ body {
 #cal-table td ul li.holiday {
 	color: #FF0000;
 }
+#footer {
+	font-weight: bolder;
+	text-align: center;
+	padding: 2rem;
+}
 
 @media (max-width: 440px){
 	#clock #time {
