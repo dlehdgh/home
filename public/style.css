@@ -59,11 +59,11 @@ body {
 }
 #cal-table th:nth-child(1), 
 #cal-table td:nth-child(1) .solar {
-	color: #0054FF;
+	color: #FF0000;
 }
 #cal-table th:nth-child(7), 
 #cal-table td:nth-child(7) .solar {
-	color: #FF0000;
+	color: #0054FF;
 }
 #cal-table td.holiday .solar,
 #cal-table td ul li.holiday {
