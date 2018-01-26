@@ -5,7 +5,7 @@ body {
 	align-items: center;
 	min-height: 100vh;
 	margin: 0;
-	background-image: url(https://source.unsplash.com/category/nature/1600x900);
+	background-image: url(https://source.unsplash.com/1600x900/?nature);
 	background-size: cover;
 }
 #navbar .navbar-header .navbar-brand {
