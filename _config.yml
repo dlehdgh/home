@@ -1,5 +1,5 @@
 title: Accessibility
-description: Cayman Blog Theme is a clean, responsive blogging theme for Jekyll and GitHub Pages, with social/SEO features.
+description: Web Accessibility Testing Page.
 show_downloads: true
 
 baseurl: "/" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
@@ -9,19 +9,20 @@ google_analytics:
 # cayman-blog date format
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 cayman-blog:
-  date_format: "%b %-d, %Y"
+#  date_format: "%b %-d, %Y"
+  date_format: "%Y.%M.%D"
 
 theme: # leave it empty
 
 # social
-author: "Lore Pirri"
+author: "Dongho"
 image: /thumbnail-jumbo.png
-twitter:
-  username: lorepirri
+# twitter:
+#  username: lorepirri
 #  site:
-facebook:
-  #publisher: 1592372034171500
-  #profile_id: 1809805629
-  app_id: 1798910940422432 # cayman-blog
-  #authors: lorepirri
+# facebook:
+#  publisher: 1592372034171500
+#  profile_id: 1809805629
+#  app_id: 1798910940422432 # cayman-blog
+#  authors: lorepirri
 #  admins:
