@@ -44,7 +44,7 @@
 
     // Gaps between nav items, but not on the last one
     &:not(:last-child) {
-      margin-right: 20px;
+     margin-right: 20px;
     }
   }
 
@@ -100,6 +100,10 @@
       &:last-child {
         margin-bottom: 10px;
       }
+      //Gaps between nav items, but not on the last one
+      &:not(:last-child) {
+       margin-right: 10px;
+      }
       margin-right: 10px;
       margin-left: 10px;
     }
@@ -112,10 +116,11 @@
  */
 .post-list {
   margin-left: 0;
+  padding: 0;
   list-style: none;
 
   > li {
-    margin-bottom: $spacing-unit * 1.5;
+    margin-bottom: $spacing-unit * 1.1;
   }
 
   > li > h2 {
@@ -134,6 +139,18 @@
 .post-meta {
   font-size: $small-font-size;
   color: $grey-color;
+  padding: 25px 0px 35px 0px;
+}
+
+.post-meta-list {
+  font-size: $small-font-size;
+  color: $grey-color;
+  padding-bottom: 10px;
+}
+
+.post-tag-list {
+  margin-bottom: 5px;
+  line-height: 2.1em;
 }
 
 .post-link {
