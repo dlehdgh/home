@@ -1,7 +1,7 @@
 ---
 layout: default
 title: WAI-ARIA
-description: Accessible Rich Internet Applications
+excerpt: Accessible Rich Internet Applications
 ---
 
 <ul>

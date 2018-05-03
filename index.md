@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Accessibility
-description: Web Accessibility Testing Page
+excerpt: Web Accessibility Testing Page
 ---
 
 ## Accessibility 소개

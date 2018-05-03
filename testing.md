@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Testing
-description: Web Accessibility Testing
+excerpt: Web Accessibility Testing
 ---
 
 <ul>

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Cayman Blog Theme"
+excerpt: ""
 category: testing
 ---
 
