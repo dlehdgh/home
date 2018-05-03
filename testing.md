@@ -3,7 +3,7 @@ layout: default
 title: Testing
 ---
 
-## 최근 게시글
+## Testing
 
 <ul>
   {% for post in site.categories.['testing'] %}
