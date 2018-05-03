@@ -21,20 +21,19 @@
     </section>
 
     <section class="main-content">
+      <h3>{{ page.title }}</h3>
+      <em>{{ page.description }}</em>
+
       {{ content }}
 
-      <div>
-        {{ content }}
-
-        <ul class="post-list">
-          {% for post in site.categories[posts.category] %}
-            <li>
-              <a class="post-link" href="{{ post.url | prepend: site.baseurl }}" title="{{ post.title }}">{{ post.title | escape }}</a>
-              <span>{{ post.date }}</span>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
+      <ul class="post-list">
+        {% for post in site.categories[posts.category] %}
+          <li>
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}" title="{{ post.title }}">{{ post.title | escape }}</a>
+            <span>{{ post.date }}</span>
+          </li>
+        {% endfor %}
+      </ul>
 
       <footer class="site-footer">
         {% if site.github.is_project_page %}
