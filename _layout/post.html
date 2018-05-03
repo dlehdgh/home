@@ -5,13 +5,10 @@ layout: default
 <article>
   <h2>{{ page.title }}</h2>
   <!--<span>{{ page.author }}</span>-->
-  <span>{{ %Y.%-m.%-d }}</span>
+  <!-- <span>{{ %Y.%-m.%-d }}</span> -->
+  <span>{{ page.date }}</span>
 </article>
 
-<article itemscope itemtype="http://schema.org/BlogPosting">
-
-  <div itemprop="articleBody">
-    {{ content }}
-  </div>
-
+<article>
+  {{ content }}
 </article>
