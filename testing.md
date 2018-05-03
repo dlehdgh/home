@@ -5,6 +5,8 @@ title: Testing
 
 ## 최근 게시글
 
-{% for post in site.categories.['testing'] %}
-  * [{{ post.title }}]({{ post.url }})
-{% endfor %}
+<ul>
+  {% for post in site.categories.['testing'] %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
