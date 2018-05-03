@@ -31,7 +31,7 @@ google_analytics:
 jekyll-theme-simple-blog:
   date_format: "%Y.%m.%-d"
 
-theme: # leave it empty
+theme: jekyll-theme-leap-day
 
 show_post_image_posts_list: false
 
