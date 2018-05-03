@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WAI-ARIA
+description: Accessible Rich Internet Applications
 ---
 
 ## 최근 게시글

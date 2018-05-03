@@ -1,3 +1,9 @@
+---
+layout: default
+title: Accessibility
+description: Web Accessibility Testing Page
+---
+
 ## Accessibility 소개
 
 Accessibility는 웹접근성을 주제로 WAI-ARIA와 마크업을 통한 접근성 향상의 방법과 모바일 웹에서 스크린리더와의 접근성에 대해 다루는 공간입니다.
