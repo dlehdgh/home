@@ -1,7 +1,10 @@
 ---
-layout: category
+layout: default
 title: Testing
-category: testing
 ---
 
 ## 최근 게시글
+
+{% for post in site.categories.[testing] %}
+  * [{{ post.title }}]({{ post.url }})
+{% endfor %}
