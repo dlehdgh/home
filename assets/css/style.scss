@@ -1,28 +1,4 @@
 ---
 ---
 
-@import 'jekyll-theme-cayman';
-
-.site-header {
-	.site-nav {
-		max-width: -webkit-calc(54em - (30px * 2));
-		max-width: calc(54em - (30px * 2));
-		margin-right: auto;
-		margin-left: auto;
-		padding-right: 30px;
-		padding-left: 30px;
-
-		.trigger {
-			float: right;
-			line-height: 35px;
-
-			.page-link:not(:last-child) {
-				margin-right: 20px;
-			}
-			.page-link {
-				color: #159957;
-				line-height: 1.5;
-			}
-		}
-	}
-}
+@import 'jekyll-theme-cayman-blog';
