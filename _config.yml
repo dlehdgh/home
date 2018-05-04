@@ -1,0 +1,5 @@
+theme: jekyll-theme-cayman
+title: Accessibility
+description: Web Accessibility Testing Page
+url: "https://dlehdgh.github.io"
+permalink: /:title.html
