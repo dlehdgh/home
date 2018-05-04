@@ -4,9 +4,11 @@ layout: default
 
 <article>
   <h2>{{ page.title }}</h2>
-  <!--<span>{{ page.author }}</span>-->
-  <!-- <span>{{ %Y.%-m.%-d }}</span> -->
-  <span>{{ page.date }}</span>
+  {% assign date_format = site.cayman-blog.date_format | default: "%Y.%-m.%-d" %}
+  <span>{{ page.date | date: date_format }}</span>
+  {% if page.author %}
+    • <span>{{ page.author }}</span>
+  {% endif %}
 </article>
 
 <article>
