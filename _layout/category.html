@@ -3,8 +3,9 @@ layout: default
 ---
 
 <article>
-  <h3>{{ posts.title }}</h3>
-  <em>{{ page.description }}</em>
+  <span>{{ page.categories }}</span>
+  <h3>{{ page.title }}</h3>
+  <em>{{ page.excerpt }}</em>
 
   {{ content }}
 
@@ -12,7 +13,8 @@ layout: default
     {% for post in site.categories[posts.category] %}
       <li>
         <a class="post-link" href="{{ post.url | prepend: site.baseurl }}" title="{{ post.title }}">{{ post.title | escape }}</a>
-        <span>{{ post.date }}</span>
+        {% assign date_format = site.cayman-blog.date_format | default: "%Y.%-m.%-d" %}
+        <span>{{ post.date | date: date_format }}</span>
       </li>
     {% endfor %}
   </ul>
