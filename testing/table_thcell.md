@@ -4,7 +4,8 @@ title: 복잡한 구조의 표(th)
 excerpt: 
 ---
 
-<h2>{{ page.title }}</h2>
+## {{ page.title }}
+
 <table summary="웹접근성의 검사유형별 평가유형별 배점 결과 지표에 관한 표입니다.">
 	<caption>웹접근성 평가 지표</caption>
 	<thead>
@@ -56,4 +57,4 @@ excerpt:
 	</tbody>
 </table>
 
-[← 이전 페이지](./)
+[← 이전 페이지](./testing/)
