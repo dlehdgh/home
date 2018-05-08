@@ -9,14 +9,15 @@
     <link rel="stylesheet" href="/user_style.css">
   </head>
   <body>
-    <nav id="top_gnb">
-      <a href="/" class="logo">{{ site.title | default: site.github.repository_name }}</a>
-      <ul>
-        {% for gnb in site.pages %}
-          <li><a href="{{ gnb.url }}">{{ gnb.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </nav>
+    <header id="site-header">
+      <nav id="site-nav">
+        <a href="/" class="logo">Accessibility</a>
+        <ul>
+          <li><a href="/wai-aria">WAI-ARIA</a></li>
+          <li><a href="/testing">Testing</a></li>
+        </ul>
+      </nav>
+    </header>
 
     <section class="page-header">
       <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>

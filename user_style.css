@@ -1,0 +1,14 @@
+#site-header {
+	background-color: #000;
+}
+#site-header #site-nav {
+	max-width: 64rem;
+	margin: 0 auto;
+}
+#site-header #site-nav a {
+	color: #fff;
+}
+#site-header #site-nav ul li {
+	display: inline-block;
+	margin-right: 1em;
+}
