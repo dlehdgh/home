@@ -2,13 +2,22 @@
 <html lang="{{ site.lang | default: "ko-KR" }}">
   <head>
     <meta charset="UTF-8">
-
-{% seo %}
+    {% seo %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="/user_style.css">
   </head>
   <body>
+    <nav id="top_gnb">
+      <a href="/" class="logo">{{ site.title | default: site.github.repository_name }}</a>
+      <ul>
+        {% for gnb in site.pages %}
+          <li><a href="{{ gnb.url }}">{{ gnb.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
     <section class="page-header">
       <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
       <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
