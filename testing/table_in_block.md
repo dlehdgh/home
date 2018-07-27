@@ -1,13 +1,13 @@
 ---
 layout: default
-title: 복잡한 구조의 표(th)
+title: 표 안의 문장과 목록
 excerpt: 
 ---
 
 <h2>표 안의 문장과 목록</h2>
 
 <table>
-	<thead>
+  <thead>
     <tr>
       <th>구분</th>
       <th>설명</th>
