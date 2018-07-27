@@ -14,19 +14,24 @@ excerpt:
     </tr>
   </thead>
   <tbody>
-    <td>tesk 1</td>
+    <td>문단</td>
     <td>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut consequuntur ipsa laboriosam, fuga alias laudantium mollitia ad ipsam perspiciatis distinctio? Reprehenderit explicabo quos sed dignissimos. Provident autem et perferendis nihil.</p> 
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ullam et ducimus! Quaerat delectus quisquam omnis possimus quis, laudantium facere ipsum! Aspernatur quidem earum voluptas voluptate eum fugit, repellendus voluptatibus.</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, iure!</p> 
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, modi.</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <span>Suscipit</span>, voluptates?</p>
     </td>
     <tr>
-      <td>tesk 2</td>
+      <td>목록</td>
       <td>
         <ul>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta veniam quis, culpa rem dolorem ea quos officia? Quam voluptas temporibus alias voluptatem quos dolor ipsa consectetur rerum? Officia, minima assumenda.</li>
-          <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, at!</li>
+          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, iure!</li>
+          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, debitis!</li>
         </ul>
       </td>
+    </tr>
+    <tr>
+      <td>링크</td>
+      <td>This link takes you to the <a href="/" target="_blank">homepage</a></td>
     </tr>
   </tbody>
 </table>
