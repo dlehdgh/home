@@ -10,7 +10,7 @@ excerpt: Web Accessibility Testing
   * [복잡한 구조의 표(th)](./testing/table_thcell.html)
   * [복잡한 구조의 표(scope)](./testing/table_scope.html)
   * [복잡한 구조의 표(id, headers)](./testing/table_id_headers.html)
-  * [표 안의 블럭태그](./testing/table_in_block.md)
+  * [표 안의 문장과 목록](./testing/table_in_block.md)
 * 입력양식(form)
   * [입력란(input)](./testing/form_input.html)
   * [이미지 레이블(image label)](./testing/form_label.html)
