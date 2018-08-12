@@ -1,5 +1,5 @@
 ---
-layout: preview
+layout: post
 title: figure와 이미지
 excerpt: 
 ---
