@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: category
 title: Testing
 excerpt: Web Accessibility Testing
 ---
