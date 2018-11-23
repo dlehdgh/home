@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<h2>{% assign category = page.category | default: page.title %}</h2>
+<ul class="posts-list">
+  {% for post in site.categories[category] %}
+    <li>
+      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      <em>{{ post.date | date_to_string }}</em>
+    </li>
+  {% endfor %}
+</ul>
+<p><a href="#" onclick="history.back(-1);">← 이전 페이지</a></p>
