@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: figure와 이미지
 excerpt: 
 ---
