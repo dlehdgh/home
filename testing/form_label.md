@@ -8,13 +8,13 @@ excerpt:
 
 <p>
 	<label for="name">
-		<img src="label_name.png" alt="이름">
+		<img src="label_name.png" alt="이름" />
 	</label><br>
 	<input type="text" id="name">
 </p>
 <p>
 	<label for="email">
-		<img src="label_email.png" alt="">
+		<img src="label_email.png" alt="" />
 	</label><br>
 	<input type="email" id="email" title="이메일">
 </p>
