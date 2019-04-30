@@ -19,6 +19,6 @@ excerpt:
 <p><button><img src="test.png"></button></p>
 <p><button><img src="test.png" alt="전송"></button></p>
 <p>icon button</p>
-<p><i class="fa fa-star"></i></p>
+<p><button type="button"><i class="fas fa-star"></i></button></p>
 
 <p><a href="#" onclick="history.back(-1);">← 이전 페이지</a></p>
