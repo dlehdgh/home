@@ -23,10 +23,10 @@ excerpt:
 	<input type="email" id="email">
 </p>
 <p>
-	전화번호<br>
-	<input type="text" size="3" title="첫번째 자리"> - 
-	<input type="text" size="4" title="두번째 자리"> - 
-	<input type="text" size="4" title="세번째 자리">
+	<span id="phone">전화번호</span><br>
+	<input type="text" size="3" title="첫번째 자리" aria-describedby="phone"> - 
+	<input type="text" size="4" title="두번째 자리" aria-describedby="phone"> - 
+	<input type="text" size="4" title="세번째 자리" aria-describedby="phone">
 </p>
 
 <p><a href="#" onclick="history.back(-1);">← 이전 페이지</a></p>
